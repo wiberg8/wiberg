@@ -30,15 +30,15 @@ const projects = [
   {
     title: "Prylex",
     description:
-      "Prylex is a searchable inventory system focused on digital devices like computers, phones, tablets, and more. The application is primarily developed a school a use to work for. that wanted to track who has which device whether its a PC, iPad, or mobile phone.",
+      "Prylex är ett sökbart inventariesystem med fokus på digitala enheter som datorer, telefoner, surfplattor med mera. Applikationen utvecklades främst för användning på en skola där jag tidigare arbetade, som ville kunna hålla koll på vem som har vilken enhet, oavsett om det är en PC, iPad eller mobiltelefon.",
     link: "https://github.com/wiberg8/Prylex",
   },
 ];
 
 function App() {
   return (
-    <div className="max-w-4xl p-4">
-      <h1 className="text-3xl font-bold mb-4 animate-bounce">Jesper Dahlberg Wiberg</h1>
+    <div className="max-w-4xl p-4 mx-auto">
+      <h1 className="text-3xl font-bold mb-4">Jesper Dahlberg Wiberg</h1>
 
       <img
         src={reactLogo}
