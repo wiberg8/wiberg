@@ -1,32 +1,31 @@
-import { useEffect, useState } from "react";
 import reactLogo from "./assets/person2.jfif";
 import "./App.css";
 
 // Portfolio projects array – configurable
 const projects = [
   {
-    title: "musikvardet.se",
+    title: "Musikvärdet",
     description:
-      "Musikvärdet.se hjälper dig ta reda på värdet på dina CD-skivor med uppdaterade slutpriser från Tradera, anpassat för den svenska marknaden och med tips för korrekt värdering.",
-    link: "#",
+      "musikvardet.se hjälper dig ta reda på värdet på dina CD-skivor med uppdaterade slutpriser från Tradera, anpassat för den svenska marknaden och med tips för korrekt värdering.",
+    link: "https://musikvardet.se",
   },
   {
-    title: "dustyguns.se",
+    title: "Dustyguns",
     description:
-      "Dustyguns.se är en köp‑ och säljsida för airsoft‑utrustning där användare kan handla begagnade airsoftvapen och tillbehör i en enkel, mobilanpassad marknadsplats utan inloggningsbarriärer. Plattformen startade för att samla airsoftannonser på ett ställe efter att försäljning förbjöds i Facebook‑grupper, och har som mål att vara en stor marknad för airsoftentusiaster, nu även med expansion mot Danmark och Norge.",
-    link: "#",
+      "dustyguns.se är en köp‑ och säljsida för airsoft‑utrustning där användare kan handla begagnade airsoftvapen och tillbehör i en enkel, mobilanpassad marknadsplats utan inloggningsbarriärer. Plattformen startade för att samla airsoftannonser på ett ställe efter att försäljning förbjöds i Facebook‑grupper, och har som mål att vara en stor marknad för airsoftentusiaster, nu även med expansion mot Danmark och Norge.",
+    link: "https://dustyguns.se",
   },
   {
-    title: "brommarecords.com",
+    title: "Bromma Records",
     description:
       "Bromma Records är en välsorterad secondhand‑skivbutik i Bromma, Stockholm som köper och säljer begagnade vinylskivor och CD. Butiken har ett brett urval av musik i olika genrer och erbjuder även att sälja skivor åt dig, köpa hela samlingar eller hjälpa till med kommissionsförsäljning.",
-    link: "#",
+    link: "https://brommarecords.com",
   },
   {
-    title: "rasundarecords.com",
+    title: "Råsunda Records",
     description:
       "Råsunda Records är en skivbutik i Solna som köper och säljer nya och begagnade vinyl och CD, värderar och tar emot hela skivsamlingar, och erbjuder ett välkurerat musiksortiment i olika genrer för samlare och musikälskare.",
-    link: "#",
+    link: "https://rasundarecords.com",
   },
   {
     title: "Prylex",
@@ -53,17 +52,17 @@ function App() {
         projects that are both visually appealing and functional.
       </p>
 
-      <h2 className="text-2xl font-semibold mb-4">My Projects</h2>
+      <h2 className="text-2xl font-semibold mb-4">Mina publika projekt</h2>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {projects.map((project, idx) => (
           <div
             key={idx}
-            className="border rounded-lg p-4 shadow hover:shadow-lg transition"
+            className="border border-vs-border p-4"
           >
             <h3 className="text-xl font-bold mb-2">{project.title}</h3>
             <p>{project.description}</p>
-            <a href={project.link} className="text-blue-500 mt-2 inline-block">
+            <a href={project.link} className="text-vs-accent hover:underline mt-2 inline-block">
               View Project
             </a>
           </div>
