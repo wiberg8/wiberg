@@ -224,12 +224,6 @@ function Experience({ className }: { className: string }) {
             <p>
               Till: <b>Nuvarande</b>
             </p>
-            <p>
-              Kunduppdrag:{" "}
-              <span className="font-bold">
-                ICA Sverige, Sveriges Akassor, Stockholms stad
-              </span>
-            </p>
           </div>
         </div>
         <div className="border border-vs-border border-2 p-3">
