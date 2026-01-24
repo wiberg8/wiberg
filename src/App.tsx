@@ -38,7 +38,7 @@ const projects = [
 function App() {
   return (
     <div className="max-w-4xl p-4">
-      <h1 className="text-3xl font-bold mb-4">Jesper Dahlberg Wiberg</h1>
+      <h1 className="text-3xl font-bold mb-4 animate-bounce">Jesper Dahlberg Wiberg</h1>
 
       <img
         src={reactLogo}
@@ -47,9 +47,7 @@ function App() {
       />
 
       <p className="mb-6">
-        Hello! I'm Jesper, a web developer passionate about building clean,
-        responsive, and user-friendly web applications. I enjoy creating
-        projects that are both visually appealing and functional.
+        Fullstackutvecklare med extra passion för backend
       </p>
 
       <h2 className="text-2xl font-semibold mb-4">Mina publika projekt</h2>
