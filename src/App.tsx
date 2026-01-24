@@ -100,62 +100,45 @@ const technologies = [
   "nginx"
 ];
 
-const navItems = [
-  {
-    label: "mina_publika_projekt",
-    href: "#mina_projekt",
-    external: false,
-  },
-  {
-    label: "teknologier",
-    href: "#teknologier",
-    external: false,
-  },
-  {
-    label: "github",
-    href: "https://github.com/wiberg8",
-    external: true,
-  },
-  {
-    label: "linkedin",
-    href: "https://www.linkedin.com/in/jesper-dahlberg-wiberg-72a763139/",
-    external: true,
-  },
-];
+const links = {
+  github: "https://github.com/wiberg8",
+  linkedin: "https://www.linkedin.com/in/jesper-dahlberg-wiberg-72a763139/"
+};
 
 function App() {
   return (
     <>
-      {Nav()}
-      <div className="mx-1 md:mx-10">
+      <div className="mx-1 md:mx-10 mt-3">
         <About />
-        <Projects id="mina_publika_projekt" />
+        <Experience/>
         <Tech id="teknologier" />
+        <Projects id="mina_publika_projekt" />
+        <a href="https://github.com/wiberg8/wiberg" className="underline text-2xl">Källkod</a>
       </div>
     </>
   );
 }
 
-function Nav() {
-  return (
-    <ul className="mx-1 md:mx-10 mt-3 py-1 text-vs-text-primary flex text-sm gap-3">
-      {navItems.map((item) => (
-        <li key={item.href}>
-          <a
-            href={item.href}
-            className="hover:underline"
-            {...(item.external && {
-              target: "_blank",
-              rel: "noopener noreferrer",
-            })}
-          >
-            {item.label}
-          </a>
-        </li>
-      ))}
-    </ul>
-  );
-}
+// function Nav() {
+//   return (
+//     <ul className="mx-1 md:mx-10 mt-3 py-1 text-vs-text-primary flex text-sm gap-3">
+//       {navItems.map((item) => (
+//         <li key={item.href}>
+//           <a
+//             href={item.href}
+//             className="hover:underline"
+//             {...(item.external && {
+//               target: "_blank",
+//               rel: "noopener noreferrer",
+//             })}
+//           >
+//             {item.label}
+//           </a>
+//         </li>
+//       ))}
+//     </ul>
+//   );
+// }
 
 function About() {
   return (
@@ -169,19 +152,67 @@ function About() {
       />
 
       <h1 className="text-3xl font-bold">{settings.getFullName()}</h1>
-      <p>Fullstackutvecklare med extra passion för backend</p>
+      <div className="group">
+        <p className="mb-3 group-hover:hidden">
+          Fullstackutvecklare med extra passion för backend
+        </p>
+        <p className="mb-3 hidden group-hover:block">
+          Har du en dålig dag, skriv lite javascript så kanske du blir glad?
+        </p>
+      </div>
+      {/* <p>Kontakt</p> */}
       <div className="flex flex-start gap-1 items-center">
         <a className="underline" href={`mailto:${settings.email}`}>
           {settings.email}
         </a>
         <button
           className="p-1 bg-vs-bg-darkest hover:bg-vs-bg-elevated hover:cursor-pointer"
-          onClick={() =>
-            navigator.clipboard.writeText(settings.email)
-          }
+          onClick={() => navigator.clipboard.writeText(settings.email)}
         >
           Kopiera
         </button>
+      </div>
+      <div className="flex gap-2">
+        <a className="underline" href={`${links.github}`}>
+          github
+        </a>
+        <a className="underline" href={`${links.linkedin}`}>
+          linkedin
+        </a>
+      </div>
+    </div>
+  );
+}
+
+function Experience() {
+  return (
+    <div className="mb-6">
+      <h2 className="text-2xl font-semibold mb-2">Arbetsliv</h2>
+
+      <div className="flex flex-col gap-3">
+        <div className="border border-vs-accent border-2 p-3">
+          <p>Consid AB - Fullstackutvecklare</p>
+          <div className="text-sm">
+            <p>
+              Från: <b>Jan 2022</b>
+            </p>
+            <p>
+              Till: <b>Nuvarande</b>
+            </p>
+            <p>Kunduppdrag: <span className="font-bold">ICA Sverige, Sveriges Akassor, Stockholms stad</span></p>
+          </div>
+        </div>
+        <div className="border border-vs-border p-3">
+          <p>Ekerö Kommun - IT Tekniker</p>
+          <div className="text-sm">
+            <p>
+              Från: <b>Jun 2018</b>
+            </p>
+            <p>
+              Till: <b>Jan 2022</b>
+            </p>
+          </div>
+        </div>
       </div>
     </div>
   );
@@ -190,10 +221,10 @@ function About() {
 function Tech({ id }: { id: string }) {
   return (
     <div className="mb-6" id={id}>
-      <h2 className="text-2xl font-semibold mb-2">Teknologier jag främst arbetar med</h2>
+      <h2 className="text-2xl font-semibold mb-2">Tekniker jag främst arbetar med</h2>
       <div className="flex flex-wrap gap-2 mb-6">
         {technologies.map((tech, idx) => (
-          <span key={idx} className="bg-vs-accent text-white px-3 py-1 text-sm">
+          <span key={idx} className="border border-vs-accent border-2 text-white px-3 py-1 text-sm">
             {tech}
           </span>
         ))}
@@ -205,9 +236,12 @@ function Tech({ id }: { id: string }) {
 function Projects({ id }: { id: string }) {
   return (
     <div className="mb-6" id={id}>
-      <h2 className="text-2xl font-semibold mb-4">Mina publika projekt</h2>
+      <h2 className="text-2xl font-semibold">Publikt tillgängliga projekt</h2>
+      <p className="text-sm mb-4">
+        Publikt åtkomliga webbprojekt för verkliga användare samt projekt där jag har publicerat källkoden öppet.
+      </p>
 
-      <div className="flex flex-wrap gap-3 w-full">
+      <div className="flex flex-wrap gap-3">
         {projects.map((project, idx) => (
           <a
             key={idx}
@@ -221,7 +255,7 @@ function Projects({ id }: { id: string }) {
         focus-visible:ring-vs-accent
         focus-visible:ring-offset-2
         focus-visible:ring-offset-vs-bg-base
-        w-[32rem]
+        w-[30rem]
       "
             aria-labelledby={`project-title-${idx}`}
             aria-describedby={`project-desc-${idx}`}
@@ -238,20 +272,20 @@ function Projects({ id }: { id: string }) {
               </h3>
             </div>
 
-            <div className="p-2 pt-2 flex flex-col gap-2">
+            <div className="p-2 flex flex-col gap-2">
               <p id={`project-desc-${idx}`}>
                 {project.description}
               </p>
-              <div className="flex flex-wrap gap-1 justify-start">
+              {/* <div className="flex flex-wrap gap-2 justify-start">
                 {technologies.slice(1, 15).map((tech, idx) => (
                   <span
                     key={idx}
-                    className="bg-vs-accent text-white px-3 py-1 text-sm"
+                    className="border border-vs-accent text-white px-3 py-1 text-sm"
                   >
                     {tech}
                   </span>
                 ))}
-              </div>
+              </div> */}
             </div>
           </a>
         ))}
