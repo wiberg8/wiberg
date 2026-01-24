@@ -9,7 +9,7 @@ const projects = [
       "musikvardet.se hjälper dig ta reda på värdet på dina CD-skivor med uppdaterade slutpriser från Tradera, anpassat för den svenska marknaden och med tips för korrekt värdering.",
     link: "https://musikvardet.se",
     image: "musikvardet.png",
-    techs: ["C#", ".NET", "mysql", "linux"]
+    techs: ["C#", ".NET", "mysql", "linux"],
   },
   {
     title: "Dustyguns",
@@ -60,10 +60,10 @@ const settings = {
   lastname: "Dahlberg Wiberg",
   email: "jesper.dahlberg.wiberg@gmail.com",
 
-  getFullName(){
-    return `${this.firstname} ${this.lastname}`
-  }
-}
+  getFullName() {
+    return `${this.firstname} ${this.lastname}`;
+  },
+};
 
 const technologies = [
   "C#/.NET",
@@ -97,23 +97,48 @@ const technologies = [
   "GraphQL",
   "OAuth / JWT",
   "Postman",
-  "nginx"
+  "nginx",
 ];
 
 const links = {
   github: "https://github.com/wiberg8",
-  linkedin: "https://www.linkedin.com/in/jesper-dahlberg-wiberg-72a763139/"
+  linkedin: "https://www.linkedin.com/in/jesper-dahlberg-wiberg-72a763139/",
+};
+
+const downloadTextFile = () => {
+  // Convert array to string with new lines
+  const text = technologies.join("\n");
+
+  const blob = new Blob([text], { type: "text/plain" });
+
+  const url = URL.createObjectURL(blob);
+
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = "tekniker.txt";
+  document.body.appendChild(a);
+  a.click();
+
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
 };
 
 function App() {
   return (
     <>
-      <div className="mx-1 md:mx-10 mt-3">
-        <About />
-        <Experience/>
-        <Tech id="teknologier" />
-        <Projects id="mina_publika_projekt" />
-        <a href="https://github.com/wiberg8/wiberg" className="underline text-2xl">Källkod</a>
+      <div className="mr-10 ml-10 md:mx-10 mt-3">
+        <About className="mb-6"/>
+        <div className="flex flex-col gap-10 md:flex-row mb-6">
+          <Experience className="md:basis-1/2" />
+          <Techniques className="md:basis-1/2" />
+        </div>
+        <Projects className="mb-6"/>
+        <a
+          href="https://github.com/wiberg8/wiberg"
+          className="underline text-2xl"
+        >
+          Källkod
+        </a>
       </div>
     </>
   );
@@ -140,9 +165,9 @@ function App() {
 //   );
 // }
 
-function About() {
+function About({className }: { className: string }) {
   return (
-    <div className="mb-6">
+    <div className={className}>
       <img
         src={reactLogo}
         className="w-32 aspect-square object-cover
@@ -184,10 +209,10 @@ function About() {
   );
 }
 
-function Experience() {
+function Experience({ className }: { className: string }) {
   return (
-    <div className="mb-6">
-      <h2 className="text-2xl font-semibold mb-2">Arbetsliv</h2>
+    <div className={className}>
+      <h2 className="text-2xl font-semibold mb-4">Arbetsliv</h2>
 
       <div className="flex flex-col gap-3">
         <div className="border border-vs-accent border-2 p-3">
@@ -199,10 +224,15 @@ function Experience() {
             <p>
               Till: <b>Nuvarande</b>
             </p>
-            <p>Kunduppdrag: <span className="font-bold">ICA Sverige, Sveriges Akassor, Stockholms stad</span></p>
+            <p>
+              Kunduppdrag:{" "}
+              <span className="font-bold">
+                ICA Sverige, Sveriges Akassor, Stockholms stad
+              </span>
+            </p>
           </div>
         </div>
-        <div className="border border-vs-border p-3">
+        <div className="border border-vs-border border-2 p-3">
           <p>Ekerö Kommun - IT Tekniker</p>
           <div className="text-sm">
             <p>
@@ -218,27 +248,40 @@ function Experience() {
   );
 }
 
-function Tech({ id }: { id: string }) {
+function Techniques({ className }: { className: string }) {
   return (
-    <div className="mb-6" id={id}>
-      <h2 className="text-2xl font-semibold mb-2">Tekniker jag främst arbetar med</h2>
-      <div className="flex flex-wrap gap-2 mb-6">
+    <div className={className}>
+      <h2 className="text-2xl font-semibold mb-4">
+        Tekniker jag främst arbetar med
+      </h2>
+
+      <div className="flex flex-wrap gap-2 mb-2">
         {technologies.map((tech, idx) => (
-          <span key={idx} className="border border-vs-accent border-2 text-white px-3 py-1 text-sm">
+          <span
+            key={idx}
+            className="border border-vs-accent border-2 px-3 py-1 text-sm"
+          >
             {tech}
           </span>
         ))}
       </div>
+      <button
+        className="p-1 bg-vs-bg-darkest hover:bg-vs-bg-elevated hover:cursor-pointer mb-1 text-sm"
+        onClick={() => downloadTextFile()}
+      >
+        Ladda ner som (.txt)
+      </button>
     </div>
   );
 }
 
-function Projects({ id }: { id: string }) {
+function Projects({ className }: { className: string }) {
   return (
-    <div className="mb-6" id={id}>
+    <div className={className}>
       <h2 className="text-2xl font-semibold">Publikt tillgängliga projekt</h2>
       <p className="text-sm mb-4">
-        Publikt åtkomliga webbprojekt för verkliga användare samt projekt där jag har publicerat källkoden öppet.
+        Publikt åtkomliga webbprojekt för verkliga användare samt projekt där
+        jag har publicerat källkoden öppet.
       </p>
 
       <div className="flex flex-wrap gap-3">
@@ -266,26 +309,14 @@ function Projects({ id }: { id: string }) {
             >
               <h3
                 id={`project-title-${idx}`}
-                className="text-xl font-bold bg-vs-bg-base/90 p-1 underline"
+                className="text-sm font-bold bg-vs-bg-base p-1 underline border border-vs-accent border-2 px-3 py-1"
               >
                 {project.title}
               </h3>
             </div>
 
             <div className="p-2 flex flex-col gap-2">
-              <p id={`project-desc-${idx}`}>
-                {project.description}
-              </p>
-              {/* <div className="flex flex-wrap gap-2 justify-start">
-                {technologies.slice(1, 15).map((tech, idx) => (
-                  <span
-                    key={idx}
-                    className="border border-vs-accent text-white px-3 py-1 text-sm"
-                  >
-                    {tech}
-                  </span>
-                ))}
-              </div> */}
+              <p id={`project-desc-${idx}`}>{project.description}</p>
             </div>
           </a>
         ))}
