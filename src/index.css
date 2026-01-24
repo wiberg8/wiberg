@@ -1,0 +1,32 @@
+@import "tailwindcss";
+
+/* body {
+  @apply bg-vs-bg-base text-vs-text-primary;
+} */
+
+body{
+  background: #252526;
+  color: #D4D4D4;
+  font-family: 'Cascadia Code', monospace;
+}
+
+@theme {
+  /* Backgrounds */
+  --color-vs-bg-darkest: #1E1E1E;
+  --color-vs-bg-base: #252526;
+  --color-vs-bg-panel: #2D2D30;
+  --color-vs-bg-elevated: #3E3E42;
+
+  /* Text */
+  --color-vs-text-primary: #D4D4D4;
+  --color-vs-text-secondary: #A6A6A6;
+  --color-vs-text-muted: #808080;
+
+  /* Accent */
+  --color-vs-accent: #007ACC;
+  --color-vs-accent-hover: #1A8CDA;
+  --color-vs-accent-active: #005A9E;
+
+  /* Borders */
+  --color-vs-border: #3E3E42;
+}
