@@ -35,32 +35,111 @@ const projects = [
   },
 ];
 
+const technologies = [
+  "C#/.NET",
+  "Python",
+
+  "REST",
+  "SOAP",
+
+  "JavaScript",
+  "TypeScript",
+  "React",
+  "Next.js",
+
+  "Tailwind",
+  "HTML",
+  "CSS",
+
+  "SQL",
+  "MySQL",
+  "Postgres",
+  "SQL Server",
+  "Entity Framework",
+
+  "Git",
+  "Linux",
+  "CI/CD",
+
+  "AWS",
+  "Azure",
+  "JSON",
+  "GraphQL",
+  "OAuth / JWT",
+  "Postman",
+];
+
 function App() {
   return (
-    <div className="max-w-4xl p-4 mx-auto">
+    <>
+      <ul className="max-w-4xl px-3 py-1 mx-auto text-vs-text-primary flex text-sm gap-3">
+      <li>
+          <a href="#mina_projekt" className="hover:underline">
+            #mina_publika_projekt
+          </a>
+        </li>
+        <li>
+          <a href="#teknologier" className="hover:underline">
+            #teknologier
+          </a>
+        </li>
+      </ul>
+      <div className="max-w-4xl p-4 mx-auto">
+        <About/>
+        <Projects id="mina_publika_projekt"/>
+        <Tech id="teknologier"/>
+      </div>
+    </>
+  );
+}
+
+function About() {
+  return (
+    <div className="mb-6">
       <h1 className="text-3xl font-bold mb-4">Jesper Dahlberg Wiberg</h1>
 
       <img
         src={reactLogo}
-        className={`w-64 mb-6 aspect-1/1 object-cover`}
+        className={`w-32 mb-6 aspect-1/1 object-cover`}
         alt="Jesper"
       />
 
-      <p className="mb-6">
-        Fullstackutvecklare med extra passion för backend
-      </p>
+      <p>Fullstackutvecklare med extra passion för backend</p>
+    </div>
+  );
+}
 
+function Tech({ id }: { id: string }) {
+  return (
+    <div className="mb-6" id={id}>
+      <h2 className="text-2xl font-semibold mb-2">
+        Teknologier
+      </h2>
+      <div className="flex flex-wrap gap-2 mb-6">
+        {technologies.map((tech, idx) => (
+          <span key={idx} className="bg-vs-accent text-white px-3 py-1 text-sm">
+            {tech}
+          </span>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function Projects({ id }: { id: string }) {
+  return (
+    <div className="mb-6" id={id}>
       <h2 className="text-2xl font-semibold mb-4">Mina publika projekt</h2>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {projects.map((project, idx) => (
-          <div
-            key={idx}
-            className="border border-vs-border p-4"
-          >
+          <div key={idx} className="border border-vs-border p-4">
             <h3 className="text-xl font-bold mb-2">{project.title}</h3>
             <p>{project.description}</p>
-            <a href={project.link} className="text-vs-accent hover:underline mt-2 inline-block">
+            <a
+              href={project.link}
+              className="text-vs-accent hover:underline mt-2 inline-block"
+            >
               View Project
             </a>
           </div>
