@@ -216,7 +216,7 @@ function Experience({ className }: { className: string }) {
 
       <div className="flex flex-col gap-3">
         <div className="border border-vs-accent border-2 p-3">
-          <p>Consid AB - Fullstackutvecklare</p>
+          <p>Consid AB - IT Konsult / Fullstackutvecklare</p>
           <div className="text-sm">
             <p>
               Från: <b>Jan 2022</b>
