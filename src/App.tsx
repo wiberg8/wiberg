@@ -274,7 +274,7 @@ function Projects({ className }: { className: string }) {
     <div className={className}>
       <h2 className="text-2xl font-semibold">Publikt tillgängliga projekt</h2>
       <p className="text-sm mb-4">
-        Publikt åtkomliga webbprojekt för verkliga användare samt projekt där
+        Publikt åtkomliga webbprojekt samt projekt där
         jag har publicerat källkoden öppet.
       </p>
 
